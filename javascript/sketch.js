@@ -36,7 +36,7 @@ function drawChart(){
 
   let myString = loudWar.lufs[0];
   let myParse = parseInt(string); 
-  ellipse(100, 100, 100, 100);
+  ellipse(100, myParse, 100, 100);
 
 
   textAlign(CENTER, BOTTOM); 
