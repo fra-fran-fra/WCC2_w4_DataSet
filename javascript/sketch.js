@@ -32,9 +32,11 @@ function draw() {
 
 function drawChart(){
 
+  let string = "300";
+
   let myString = data.content.lufs[0];
-  let myParse = parseInt(myString); 
-  ellipse(100, 100, myParse, 100);
+  let myParse = parseInt(string); 
+  ellipse(100, 100, 100, 100);
 
 
   textAlign(CENTER, BOTTOM); 
