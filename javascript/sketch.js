@@ -1,11 +1,5 @@
-//no animation / interaction chart
-//if you want to use animation or create a loading state look at the cat fact example from last week 
-// use a boolean to control when your data is loaded
-
-//data for this visualisation was copied from here as a csv (you can convert csv to JSON online):
-//https://www.visualcrossing.com/weather/weather-data-services/London,UK/metric/last15days
-
 let weather;
+let loudWar;
 
 function setup() {
   createCanvas(500, 500);
@@ -14,13 +8,13 @@ function setup() {
   noLoop();
   angleMode(DEGREES); 
 
-  fetch("./json/weather.json").then(function(response) {
+  fetch("./json/loudnessWar.json").then(function(response) {
     return response.json();
   }).then(function(data) {
 
     console.log(data);
     
-    weather = data.weather;
+    loudWar = data.loudWar;
 
     //using no Loop? you can just call your function once the data is loaded
     drawChart();
@@ -37,6 +31,8 @@ function draw() {
 }
 
 function drawChart(){
+
+  ellipse(100, 100, 100, 100);
 
 
   textAlign(CENTER, BOTTOM); 
