@@ -6,20 +6,20 @@ function setup() {
 
   //no animation / interaction chart
   noLoop();
-  angleMode(DEGREES); 
+  angleMode(DEGREES);
 
-  fetch("./json/loudnessWar.json").then(function(response) {
+  fetch("./json/loudnessWar.json").then(function (response) {
     return response.json();
-  }).then(function(data) {
+  }).then(function (data) {
 
     console.log(data);
-    
+
     loudWar = data.content;
 
     //using no Loop? you can just call your function once the data is loaded
     drawChart();
-  
-  }).catch(function(err) {
+
+  }).catch(function (err) {
     console.log(`Something went wrong: ${err}`);
   });
 
@@ -30,102 +30,31 @@ function draw() {
 
 }
 
-function drawChart(){
+function parseLufs(_array) {
+  let arrayParsed = [];
 
-  let string = "300";
+  for (let i = 0; i < _array.length; i++) {
+    let itemToParse = _array[i];
+    let itemParsed = parseInt(itemToParse);
+    arrayParsed.push(itemParsed);
+  }
 
-  let myString = loudWar.lufs[0];
-  let myParse = parseInt(myString); 
-  ellipse(100, myParse, 100, 100);
+  return arrayParsed;
+}
 
+function drawChart() {
 
-  textAlign(CENTER, BOTTOM); 
-  text("Temperature in "+weather[0].name,width/2,height-10);
+  let blabla = parseLufs(loudWar.lufs);
 
-  // Compute max and min (for normalization)
-  let maxTemp = 0; 
-  let minTemp = 0;
-  for (let i=0; i<weather.length; i++) {
-    if ( weather[i].temp > maxTemp) {
-      maxTemp = weather[i].temp;
-    }
-    if ( weather[i].temp < minTemp) {
-      minTemp = weather[i].temp;
-    }
+  for (let i = 0; i < blabla.length; i++) {
+    ellipse(blabla[i] * -100, 100, 100, 100);
   }
 
 
-  let tempStep = 5;
-  maxTemp = Math.ceil(maxTemp / tempStep) * tempStep;//always round up the max temp to the next step in chart
-  minTemp = Math.floor(minTemp / tempStep) * tempStep;//always round down the min temp to the next step in chart
 
-  
-  let colWidth = width/(weather.length+2); //add 2 so there is space either side of the chart
-  let chartHeight = height-(colWidth*2);
+  let myString = loudWar.lufs[0];
+  let myParse = parseInt(myString);
+  ellipse(100, myParse, 100, 100);
 
-  // Display temp labels
-  for (let temp = minTemp; temp <= maxTemp; temp += tempStep) {
-    
-    let tempY =  map(temp, minTemp, maxTemp, chartHeight, colWidth); 
-
-    fill(0); 
-    textAlign(RIGHT, BOTTOM); 
-    push();
-    translate( colWidth, tempY);
-    line(0,0,10,0);
-    text(temp,-10,5);
-    pop();
-
-  }  
-
-  // Display date labels
-  for (let i=0; i<weather.length; i++) {
-    let item = weather[i];
-    
-    let dateX = map(i, 0, weather.length, colWidth, width); //map range includes the space on either side
-   
-    let date = new Date(item.datetime);
-    let dateString = date.toDateString().split(" ");//splits on space
-    console.log(dateString);//logs out array
-    dateString.pop();//discards the year because why not, you could add this to the chart title
-    dateString = dateString.join(" ");// uses javascript array join functionatlity
-    console.log(dateString);
-
-    fill(0); 
-    textAlign(LEFT, TOP); 
-    push();
-    translate( dateX, chartHeight);
-    line(0,0,0,-(chartHeight-colWidth));
-    rotate(45);
-    text(dateString,10,0);
-    pop();
-
-  }  
-
-  //Map line to chart
-  strokeWeight(2);
-  stroke(255,0,0);
-  noFill();
-
-  //this is a shape so we need two loops for the temperature
-  beginShape();
-  // Display temp
-  for (let i=0; i<weather.length; i++) {
-    let item = weather[i];
-    
-    let pX = map(i, 0, weather.length, colWidth, width); //map range includes the space on either side
-    let pY = map(item.temp, minTemp, maxTemp, chartHeight, colWidth); //inverse mapping because our origin in p5 is in the top left
-
-    vertex(pX, pY);
- //   text(item.temp,pX,pY);// to test
-    
-  }  
-  endShape();
-
-
-  //Code challenge... 
-  //map the feelsLike property to the same graph (read the json file)
-  //can you make the line plotting functionality more modular??
-  //make a function that takes in the property to map and the color as parameters
 
 }
