@@ -32,7 +32,7 @@ function draw() {
 
 function drawChart(){
 
-  let myString = loudWar.content.lufs[0];
+  let myString = loudnessWar.content.lufs[0];
   let myParse = parseInt(myString);
   ellipse(100, 100, myParse, 100);
 
