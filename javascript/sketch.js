@@ -47,14 +47,14 @@ function drawChart() {
   let blabla = parseLufs(loudWar.lufs);
 
   for (let i = 0; i < blabla.length; i++) {
-    ellipse(blabla[i] * -100, 100, 100, 100);
+    ellipse(blabla[i] * -100, 300, 300, 300);
   }
 
 
 
-  let myString = loudWar.lufs[0];
-  let myParse = parseInt(myString);
-  ellipse(100, myParse, 100, 100);
+  // let myString = loudWar.lufs[0];
+  // let myParse = parseInt(myString);
+  // ellipse(100, myParse, 100, 100);
 
 
 }
