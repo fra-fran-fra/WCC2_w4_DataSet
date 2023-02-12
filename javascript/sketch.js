@@ -47,7 +47,7 @@ function drawChart() {
   let blabla = parseLufs(loudWar.lufs);
 
   for (let i = 0; i < blabla.length; i++) {
-    ellipse(300, 300, 300, 300);
+    ellipse(blabla[i] * 100, 300, 300, 300);
   }
 
 
