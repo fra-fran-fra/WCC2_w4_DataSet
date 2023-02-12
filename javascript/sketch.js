@@ -32,7 +32,7 @@ function draw() {
 
 function drawChart(){
 
-  ellipse(100, 100, 100, 100);
+  ellipse(loudWar.content.lufs, 100, 100, 100);
 
 
   textAlign(CENTER, BOTTOM); 
