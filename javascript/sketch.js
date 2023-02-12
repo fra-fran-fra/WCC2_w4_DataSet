@@ -14,7 +14,7 @@ function setup() {
 
     console.log(data);
     
-    loudWar = data.loudWar;
+    loudWar = data.content;
 
     //using no Loop? you can just call your function once the data is loaded
     drawChart();
@@ -34,7 +34,7 @@ function drawChart(){
 
   let string = "300";
 
-  let myString = data.content.lufs[0];
+  let myString = loudWar.lufs[0];
   let myParse = parseInt(string); 
   ellipse(100, 100, 100, 100);
 
