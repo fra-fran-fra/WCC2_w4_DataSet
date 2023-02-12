@@ -14,7 +14,7 @@ function setup() {
 
     console.log(data);
     
-    loudWar = data.loudWar;
+    loudWar = data.loudnessWar;
 
     //using no Loop? you can just call your function once the data is loaded
     drawChart();
