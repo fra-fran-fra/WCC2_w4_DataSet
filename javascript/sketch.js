@@ -49,6 +49,4 @@ function drawChart() {
   for (let i = 0; i < parsedLufs.length; i++) {
     ellipse(parsedLufs[i] * -10, 300, 300, 300);
   }
-
-  TO BE CONTINUED...
 }
