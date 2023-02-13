@@ -44,17 +44,11 @@ function parseLufs(_array) {
 
 function drawChart() {
 
-  let blabla = parseLufs(loudWar.lufs);
+  let parsedLufs = parseLufs(loudWar.lufs);
 
-  for (let i = 0; i < blabla.length; i++) {
-    ellipse(blabla[i] * -10, 300, 300, 300);
+  for (let i = 0; i < parsedLufs.length; i++) {
+    ellipse(parsedLufs[i] * -10, 300, 300, 300);
   }
 
-
-
-  // let myString = loudWar.lufs[0];
-  // let myParse = parseInt(myString);
-  // ellipse(100, myParse, 100, 100);
-
-
+  TO BE CONTINUED...
 }
